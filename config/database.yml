@@ -1,0 +1,18 @@
+#settings.yml
+development: &common_settings
+  db_name: 'phone_backend_development'
+  db_host: 'localhost'
+  db_username: 'root'
+  db_password: ''
+
+production:
+  <<: *common_settings
+
+staging:
+  <<: *common_settings
+
+test:
+  db_name: 'phone_backend_test'
+  db_host: 'localhost'
+  db_username: 'root'
+  db_password: ''

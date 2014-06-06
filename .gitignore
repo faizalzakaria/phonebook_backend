@@ -1,0 +1,15 @@
+/.bundle
+/log/*.log*
+/log/cron_runner/*.log*
+/tmp
+.rvmrc
+.DS_STORE
+.ruby-gemset
+.ruby-version
+*~*
+/.project
+/config/credentials.yml
+/config/credentials.yml.prod
+/config/credentials.yml.production
+/.env.production
+/scripts/test_purchase_real.sh
