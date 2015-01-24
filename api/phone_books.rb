@@ -1,6 +1,6 @@
 module Backend
   class PhoneBooks < Grape::API
-    version 'v1', using: :header, vendor: 'durian'
+    version 'v1', using: :header, vendor: 'fainow'
 
     rescue_from :all
 

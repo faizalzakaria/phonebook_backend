@@ -20,8 +20,6 @@ end
 require 'app/models/init'
 
 # Require api
-Dir[File.expand_path('../../api/*.rb', __FILE__)].each do |f|
-  require f
-end
-require 'app/api'
+require_all "api"
 
+require 'app/api'
