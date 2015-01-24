@@ -10,4 +10,4 @@ ActiveRecord::Base.establish_connection(
 )
 
 # Requires all models
-Dir['./models/*.rb'].each { |file| require file }
+require_all './app/models'
