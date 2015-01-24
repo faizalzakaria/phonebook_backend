@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 gem 'rake'
 gem 'activerecord'
 gem 'mysql2'
@@ -8,11 +9,12 @@ gem 'annotate'
 gem 'rack-cors', '~> 0.2.8', :require => 'rack/cors'
 gem 'grape-swagger', '~> 0.6.0'
 gem 'racksh'
+gem 'require_all'
 
 group :development, :test do
-  gem 'debugger'
   gem 'rubocop'
   gem 'faker'
+  gem 'railroady'
 end
 
 gem 'rspec-core'

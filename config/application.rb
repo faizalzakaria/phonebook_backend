@@ -17,7 +17,7 @@ Dir[File.expand_path('../../lib/**/*.rb', __FILE__)].each do |f|
 end
 
 # Require app, model
-require 'models/init'
+require 'app/models/init'
 
 # Require api
 Dir[File.expand_path('../../api/*.rb', __FILE__)].each do |f|
