@@ -23,7 +23,8 @@ module Backend
 
       # show all
       get do
-        PhoneBook.all
+        params.delete(:route_info)
+        JSON.parse PhoneBook.fastapi.filter(params).response
       end
 
       # Create
@@ -34,7 +35,7 @@ module Backend
       # Show
       route_param :id do
         get do
-          PhoneBook.find(params[:id])
+          JSON.parse PhoneBook.fastapi.fetch(params[:id]).response
         end
 
         # Update

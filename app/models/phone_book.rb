@@ -1,6 +1,12 @@
 class PhoneBook < ActiveRecord::Base
   attr_accessible :name, :phone
 
+  fastapi_standard_interface [
+    :id,
+    :name,
+    :phone
+  ]
+
   validates :name, :phone, presence: true
 
   SPLITTER = "    "

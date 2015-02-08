@@ -2,7 +2,7 @@ require 'active_record'
 
 # establish db connection
 ActiveRecord::Base.establish_connection(
-  adapter: 'mysql2',
+  adapter: $settings.db_adapter,
   host: $settings.db_host,
   database: $settings.db_name,
   username: $settings.db_username,

@@ -25,7 +25,7 @@ namespace :db do
   def connect(conf)
     conf = OpenStruct.new(conf)
     ActiveRecord::Base.establish_connection(
-      adapter: "mysql2",
+      adapter: conf.db_adapter,
       host: conf.db_host,
       database: conf.db_name,
       username: conf.db_username,
