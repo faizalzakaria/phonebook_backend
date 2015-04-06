@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150406070553) do
+ActiveRecord::Schema.define(:version => 20150406071458) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "phone",      :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "fake",                     :default => false
   end
 
 end
