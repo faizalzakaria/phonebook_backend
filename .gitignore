@@ -13,3 +13,4 @@
 /config/credentials.yml.production
 /.env.production
 /scripts/test_purchase_real.sh
+/.env
