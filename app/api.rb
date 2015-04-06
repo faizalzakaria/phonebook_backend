@@ -4,6 +4,6 @@ module Backend
     format :json
 
     mount Backend::HealthCheck
-    mount Backend::PhoneBooks
+    mount Backend::Contacts
   end
 end

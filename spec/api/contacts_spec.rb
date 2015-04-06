@@ -10,7 +10,7 @@ describe Backend::API do
 
   describe 'Test phone api' do
 
-    let(:phone_book) do
+    let(:contact) do
       {
         name: "Jumbo Mumbo",
         phone: "619 788 3983"
@@ -18,56 +18,56 @@ describe Backend::API do
     end
 
     it 'should create phone book' do
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
     end
 
     it 'should return all phone book' do
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
-      get '/api/v1/phone_books'
+      get '/api/v1/contacts'
       assert_response_success last_response
       JSON.parse(last_response.body).count.should eq(3)
     end
 
     it 'should get 1 phone book' do
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
-      phone_book = JSON.parse last_response.body
-      get "/api/v1/phone_books/#{phone_book['id']}"
+      contact = JSON.parse last_response.body
+      get "/api/v1/contacts/#{contact['id']}"
       assert_response_success last_response
       JSON.parse(last_response.body).count.should eq(1)
     end
 
     it 'should update a phone book' do
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
       parsed_data = JSON.parse last_response.body
-      parsed_data = parsed_data['phone_book']
-      put "/api/v1/phone_books/#{parsed_data['id']}", { name: 'Tata Titi' }
+      parsed_data = parsed_data['contact']
+      put "/api/v1/contacts/#{parsed_data['id']}", { name: 'Tata Titi' }
       assert_response_success last_response
     end
 
     it 'should delete a phone book' do
-      post '/api/v1/phone_books', phone_book
+      post '/api/v1/contacts', contact
       assert_response_success last_response
       parsed_data = JSON.parse last_response.body
-      parsed_data = parsed_data['phone_book']
-      delete "/api/v1/phone_books/#{parsed_data['id']}"
+      parsed_data = parsed_data['contact']
+      delete "/api/v1/contacts/#{parsed_data['id']}"
       assert_response_success last_response
     end
 
     it 'should upload a phone book' do
-      PhoneBook.count.should eq(0)
-      PhoneBook.create(name: 'Destinee Hilll', phone: '123456')
-      PhoneBook.count.should eq(1)
-      post '/api/v1/phone_books/upload', { phone_books: mock_upload_data }
+      Contact.count.should eq(0)
+      Contact.create(name: 'Destinee Hilll', phone: '123456')
+      Contact.count.should eq(1)
+      post '/api/v1/contacts/upload', { contacts: mock_upload_data }
       assert_response_success last_response
-      PhoneBook.count.should eq(4)
+      Contact.count.should eq(4)
     end
 
   end

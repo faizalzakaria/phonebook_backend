@@ -1,5 +1,5 @@
 module Backend
-  class PhoneBooks < Grape::API
+  class Contacts < Grape::API
     version 'v1', using: :header, vendor: 'fainow'
 
     rescue_from :all
@@ -7,14 +7,14 @@ module Backend
     get '/public/*' do
     end
 
-    resource :phone_books do
+    resource :contacts do
 
       post '/upload' do
-        PhoneBook.upload(params.delete(:phone_books))
+        Contact.upload(params.delete(:contacts))
       end
 
       get '/download' do
-        PhoneBook.download
+        Contact.download
         content_type "application/octet-stream"
         header['Content-Disposition'] = "attachment; filename=download.txt"
         env['api.format'] = :binary
@@ -23,37 +23,37 @@ module Backend
 
       # show all
       get do
-        PhoneBook.all
+        Contact.all
       end
 
       # Create
       post do
-        PhoneBook.create(params)
+        Contact.create(params)
       end
 
       # Show
       route_param :id do
         get do
-          PhoneBook.find(params[:id])
+          Contact.find(params[:id])
         end
 
         # Update
         put do
-          phone_book = PhoneBook.find(params[:id])
-          fail 'No found book found' unless phone_book
-          phone_book.update_attributes(params.delete(:phone_book))
-          phone_book
+          contact = Contact.find(params[:id])
+          fail 'No found book found' unless contact
+          contact.update_attributes(params.delete(:contact))
+          contact
         end
 
         # Delete
         delete do
-          phone_book = PhoneBook.find(params[:id])
-          fail 'No found book found' unless phone_book
-          phone_book.delete
+          contact = Contact.find(params[:id])
+          fail 'No found book found' unless contact
+          contact.delete
         end
 
       end # Route_param
-    end # Resource phone_books
+    end # Resource contacts
 
   end
 end
