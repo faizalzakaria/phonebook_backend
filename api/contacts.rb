@@ -9,18 +9,6 @@ module Backend
 
     resource :contacts do
 
-      post '/upload' do
-        Contact.upload(params.delete(:contacts))
-      end
-
-      get '/download' do
-        Contact.download
-        content_type "application/octet-stream"
-        header['Content-Disposition'] = "attachment; filename=download.txt"
-        env['api.format'] = :binary
-        File.open('public/download.txt').read
-      end
-
       # show all
       get do
         Contact.all
