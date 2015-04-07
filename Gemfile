@@ -12,6 +12,7 @@ gem 'racksh'
 gem 'require_all'
 gem 'newrelic_rpm'
 gem 'dotenv'
+gem 'unicorn'
 
 group :development, :test do
   gem 'rubocop'
